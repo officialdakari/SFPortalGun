@@ -80,7 +80,9 @@ public class PortalGunEventListener implements Listener {
     }
 
     public void handleGravGun(Player p) {
-        if (!PortalGunPlugin.holding.containsKey(p.getName())) return;
+        if (!PortalGunPlugin.holding.containsKey(p.getName())) {
+            return;
+        }
         Entity entity = PortalGunPlugin.holding.get(p.getName());
         if (p == null) {
             PortalGunPlugin.holding.remove(p.getName());
@@ -89,9 +91,15 @@ public class PortalGunEventListener implements Listener {
         RayTraceResult rtr = p.rayTraceBlocks(6, FluidCollisionMode.NEVER);
         if (rtr != null) {
             Location loc = rtr.getHitPosition().toLocation(p.getWorld());
+            if (entity.getType() == EntityType.BLOCK_DISPLAY) {
+                loc.setDirection(new Vector(0, 0, 0));
+            }
             entity.teleport(loc.add(0, 0.8, 0));
         } else {
             Location loc = p.getLocation().clone().add(p.getLocation().getDirection().multiply(4));
+            if (entity.getType() == EntityType.BLOCK_DISPLAY) {
+                loc.setDirection(new Vector(0, 0, 0));
+            }
             entity.teleport(loc.add(0, 0.8, 0));
         }
         entity.setFallDistance(0);
