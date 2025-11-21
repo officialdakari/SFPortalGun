@@ -1,0 +1,8 @@
+main: ru.officialdakari.portalgunsf.PortalGunPlugin
+name: SFPortalGun
+version: 1.0-SNAPSHOT
+author: officialdakari
+
+depend: [Slimefun]
+
+api-version: 1.14
