@@ -92,13 +92,13 @@ public class PortalGunEventListener implements Listener {
         if (rtr != null) {
             Location loc = rtr.getHitPosition().toLocation(p.getWorld());
             if (entity.getType() == EntityType.BLOCK_DISPLAY) {
-                loc.setDirection(new Vector(0, 0, 0));
+                loc = loc.setDirection(new Vector(0, 0, 0));
             }
             entity.teleport(loc.add(0, 0.8, 0));
         } else {
             Location loc = p.getLocation().clone().add(p.getLocation().getDirection().multiply(4));
             if (entity.getType() == EntityType.BLOCK_DISPLAY) {
-                loc.setDirection(new Vector(0, 0, 0));
+                loc = loc.setDirection(new Vector(0, 0, 0));
             }
             entity.teleport(loc.add(0, 0.8, 0));
         }
